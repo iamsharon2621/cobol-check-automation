@@ -10,7 +10,7 @@ export PATH=$PATH:/usr/lpp/zowe/cli/node/bin
 java -version
 
 ### # Set ZOWE_USERNAME
-### ZOWE_USERNAME="Z80922" # Replace with the actual username
+ZOWE_USERNAME="Z80922" # Replace with the actual username
 # Convert username to lowercase
 LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
 
