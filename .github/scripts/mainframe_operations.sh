@@ -11,18 +11,18 @@ java -version
 
 ### # Set ZOWE_USERNAME
 ZOWE_USERNAME="Z80922" # Replace with the actual username
-# Convert username to lowercase
-LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
+#### Convert username to lowercase
+###LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
 
 # Change to the cobolcheck directory
-### cd cobolcheck
-cd "/z/$LOWERCASE_USERNAME/cobolcheck"
+cd cobolcheck
+###cd "/z/$LOWERCASE_USERNAME/cobolcheck"
 echo "Changed to $(pwd)"
 ls -al
 
 # Make cobolcheck executable
 chmod +x cobolcheck
-chmod +x "/z/$LOWERCASE_USERNAME/cobolcheck"
+###chmod +x "/z/$LOWERCASE_USERNAME/cobolcheck"
 echo "Made cobolcheck executable"
 
 # Make script in scripts directory executable
