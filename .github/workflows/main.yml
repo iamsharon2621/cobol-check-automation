@@ -29,6 +29,7 @@ jobs:
 #        chmod +x .github/scripts/zowe_operations.sh
       run: |
         chmod +x .github/scripts/mainframe_operations.sh
+        chmod +x scripts/linux_gnucobol_run_tests
 
 #    - name: Run Zowe operations
 #      env:
