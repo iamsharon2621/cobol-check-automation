@@ -25,19 +25,20 @@ jobs:
       run: npm install -g @zowe/cli@latest
 
     - name: Make scripts executable
+#      run: |
+#        chmod +x .github/scripts/zowe_operations.sh
       run: |
-        chmod +x .github/scripts/zowe_operations.sh
         chmod +x .github/scripts/mainframe_operations.sh
 
-    - name: Run Zowe operations
-      env:
-        ZOWE_OPT_HOST: ${{ secrets.ZOWE_HOST }}
-        ZOWE_OPT_PORT: 10443
-        ZOWE_OPT_USER: ${{ secrets.ZOWE_USERNAME }}
-        ZOWE_OPT_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
-        ZOWE_OPT_REJECT_UNAUTHORIZED: false
-        ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
-      run: .github/scripts/zowe_operations.sh
+#    - name: Run Zowe operations
+#      env:
+#        ZOWE_OPT_HOST: ${{ secrets.ZOWE_HOST }}
+#        ZOWE_OPT_PORT: 10443
+#        ZOWE_OPT_USER: ${{ secrets.ZOWE_USERNAME }}
+#        ZOWE_OPT_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
+#        ZOWE_OPT_REJECT_UNAUTHORIZED: false
+#        ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
+#      run: .github/scripts/zowe_operations.sh
 
     - name: Perform mainframe operations
       env:
