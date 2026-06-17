@@ -24,12 +24,15 @@
        INITIALIZATION.
            MOVE "Millard" TO EMP-FNAME.
            MOVE "Fillmore" TO EMP-LNAME.
+           MOVE 19 TO EMP-HOURS.
+           MOVE 23.50 TO EMP-HOURLY-RATE.
+       PAYMENT-WEEKLY.
            IF  EMP-HOURS >= 40
                MOVE .25 TO EMP-OT-RATE
            ELSE IF EMP-HOURS >= 50
                MOVE .50 TO EMP-OT-RATE
            ELSE
-                MOVE ZERO TO EMP-OT-RATE.
+               MOVE ZERO TO EMP-OT-RATE.
            COMPUTE EMP-PAY-WEEK =
                    (EMP-HOURS * EMP-HOURLY-RATE) * (1 + EMP-OT-RATE).
        PAYMENT-MONTHLY.
@@ -37,8 +40,8 @@
                MOVE .50 TO EMP-REWARD
            ELSE
                MOVE ZERO TO EMP-REWARD.
-               COMPUTE EMP-PAY-MONTH =
-                       (EMP-PAY-WEEK * 4) * (1 + EMP-REWARD).
+           COMPUTE EMP-PAY-MONTH =
+               (EMP-PAY-WEEK * 4) * (1 + EMP-REWARD).
        SHOW-OUTPUT.
            DISPLAY "Name: " EMP-NAME.
            DISPLAY "Hours Worked Per Week: " EMP-HOURS.
