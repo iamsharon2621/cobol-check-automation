@@ -32,7 +32,7 @@ run_cobolcheck() {
   program=$1
   echo "Running cobolcheck for $program"
   echo "current path $(pwd)"
-  ls -al
+  ls -l
 
   # Run cobolcheck, but don't exit if it fails
   ./cobolcheck -p $program
