@@ -4,10 +4,10 @@
     "base": {
       "type": "base",
       "properties": {
-        "host": "204.90.115.200",
+        "host": "${ZOWE_ZOSMF_HOST}",
         "port": ${ZOWE_ZOSMF_PORT},
-        "user": "${MAINFRAME_USER}",
-        "password": "${MAINFRAME_PASSWORD}"
+        "user": "${ZOWE_USERNAME}",
+        "password": "${ZOWE_PASSWORD}",
         "rejectUnauthorized": false
       },
       "secure": [
@@ -21,27 +21,17 @@
         "port": 22,
         "host": "${ZOWE_ZOSMF_HOST}",
         "port": ${ZOWE_ZOSMF_PORT},
-        "user": "${MAINFRAME_USER}",
-        "password": "${MAINFRAME_PASSWORD}"
+        "user": "${ZOWE_USERNAME}",
+        "password": "${ZOWE_PASSWORD}"
       },
       "secure": [
         "user",
         "password"
       ]
     },
-    "base": {
-      "type": "base",
-      "properties": {
-        "host": "${ZOWE_ZOSMF_HOST}",
-        "port": ${ZOWE_ZOSMF_PORT},
-        "user": "${MAINFRAME_USER}",
-        "password": "${MAINFRAME_PASSWORD}",
-        "rejectUnauthorized": false
-      },
-      "secure": [
-        "user",
-        "password"
-      ]
+    "zosmf": {
+      "type": "zosmf",
+      "properties": {}
     }
   },
   "defaults": {
