@@ -37,7 +37,7 @@ jobs:
 
     - name: Setup Mainframe Environment and Upload COBOL Check
       env:
-        ZOWE_ZOSMF_HOST: ${{ secrets.ZOWE_ZOSMF_HOST }}
+        ZOWE_ZOSMF_HOST: ${{ vars.ZOWE_ZOSMF_HOST }}
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
@@ -46,7 +46,7 @@ jobs:
 
     - name: Run COBOL Check on Mainframe
       env:
-        ZOWE_ZOSMF_HOST: ${{ secrets.ZOWE_ZOSMF_HOST }}
+        ZOWE_ZOSMF_HOST: ${{ vars.ZOWE_ZOSMF_HOST }}
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
