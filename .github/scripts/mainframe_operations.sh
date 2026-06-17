@@ -11,8 +11,8 @@ java -version
 
 # Set ZOWE_USERNAME
 # ZOWE_USERNAME="Z80922" # Replace with the actual username
-echo "${LOWERCASE_USERNAME}"
-echo "${ZOWE_USER}"
+echo "The lowercase user is: $LC_USERNAME"
+echo "The uppercase user is: $UC_USERNAME"
 
 # Change to the cobolcheck directory
 cd cobol-check
@@ -48,10 +48,10 @@ run_cobolcheck() {
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "${GENERATED_CBL}" ]; then
     # Copy to the MVS dataset
-    if cp ${GENERATED_CBL} "//'${ZOWE_USER}.CBL($program)'"; then
-      echo "Copied CC##99.CBL to ${ZOWE_USER}.CBL($program)"
+    if cp ${GENERATED_CBL} "//'$UC_USERNAME.CBL($program)'"; then
+      echo "Copied CC##99.CBL to $UC_USERNAME.CBL($program)"
     else
-      echo "Failed to copy CC##99.CBL to ${ZOWE_USER}.CBL($program)"
+      echo "Failed to copy CC##99.CBL to $UC_USERNAME.CBL($program)"
       exit 1
     fi
   else
@@ -61,10 +61,10 @@ run_cobolcheck() {
 
   # Copy the JCL file if it exists
   if [ -f "${PGM_JCL}" ]; then
-    if cp ${PGM_JCL} "//'${ZOWE_USER}.JCL($program)'"; then
-      echo "Copied ${PGM_JCL} to ${ZOWE_USER}.JCL($program)"
+    if cp ${PGM_JCL} "//'$UC_USERNAME.JCL($program)'"; then
+      echo "Copied ${PGM_JCL} to $UC_USERNAME.JCL($program)"
     else
-      echo "Failed to copy ${PGM_JCL} to ${ZOWE_USER}.JCL($program)"
+      echo "Failed to copy ${PGM_JCL} to $UC_USERNAME.JCL($program)"
       exit 1
     fi
   else
