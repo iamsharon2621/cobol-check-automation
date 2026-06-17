@@ -31,6 +31,15 @@ jobs:
     - name: Install Zowe CLI
       run: npm install -g @zowe/cli@latest
 
+    - name: Generate common variables
+      env:
+        ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
+      run: |
+        LC_VAR=$(echo "$ZOWE_USER" | tr '[:upper:]' '[:lower:]')
+        echo "LC_USERNAME=$LC_VAR" >> $GITHUB_ENV
+        UC_VAR=$(echo "$ZOWE_USER" | tr '[:lower:]' '[:upper:]')
+        echo "UC_USERNAME=$UC_VAR" >> $GITHUB_ENV
+
     - name: Run COBOL Check
       env:
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
@@ -47,7 +56,7 @@ jobs:
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
-        export LOWERCASE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}" | tr '[:upper:]' '[:lower:]')
+        # export LOWERCASE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}" | tr '[:upper:]' '[:lower:]')
         chmod +x .github/scripts/zowe_operations.sh
         .github/scripts/zowe_operations.sh
 
@@ -58,7 +67,6 @@ jobs:
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
-        export LOWERCASE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}" | tr '[:upper:]' '[:lower:]')
-        export ZOWE_USER="${{ secrets.ZOWE_USERNAME }}"
+        # export LOWERCASE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}" | tr '[:upper:]' '[:lower:]')
         chmod +x .github/scripts/mainframe_operations.sh
         .github/scripts/mainframe_operations.sh
