@@ -11,6 +11,8 @@ java -version
 
 # Set ZOWE_USERNAME
 # ZOWE_USERNAME="Z80922" # Replace with the actual username
+echo "${ZOWE_USERNAME}"
+echo "${LOWERCASE_USERNAME}"
 
 # Change to the cobolcheck directory
 cd cobol-check
@@ -39,7 +41,7 @@ run_cobolcheck() {
   ls -lrt ./testruns
   ls -lrt ../
   # Define the correct path where CobolCheck puts the generated test file
-  GENERATED_CBL="./cobol-check/testruns/CC##99.CBL"
+  GENERATED_CBL="./testruns/CC##99.CBL"
   # Define the correct path where JCL file located
   PGM_JCL="../$program.JCL"
 
@@ -50,9 +52,11 @@ run_cobolcheck() {
       echo "Copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
     else
       echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
+      exit 1
     fi
   else
     echo "CC##99.CBL not found for $program"
+    exit 1
   fi
 
   # Copy the JCL file if it exists
@@ -61,9 +65,11 @@ run_cobolcheck() {
       echo "Copied ${PGM_JCL} to ${ZOWE_USERNAME}.JCL($program)"
     else
       echo "Failed to copy ${PGM_JCL} to ${ZOWE_USERNAME}.JCL($program)"
+      exit 1
     fi
   else
     echo "${PGM_JCL} not found"
+    exit 1
   fi
 }
 
