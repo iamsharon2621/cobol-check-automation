@@ -12,14 +12,14 @@ java -version
 # Set ZOWE_USERNAME
 # ZOWE_USERNAME="Z80922" # Replace with the actual username
 
-# Make cobolcheck executable
-chmod +x cobolcheck
-echo "Made cobolcheck executable"
-
 # Change to the cobolcheck directory
 cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
+
+# Make cobolcheck executable
+chmod +x cobolcheck
+echo "Made cobolcheck executable"
 
 # Make script in scripts directory executable
 cd scripts
@@ -31,8 +31,6 @@ cd ..
 run_cobolcheck() {
   program=$1
   echo "Running cobolcheck for $program"
-  echo "current path $(pwd)"
-  ls -l
 
   # Run cobolcheck, but don't exit if it fails
   ./cobolcheck -p $program
