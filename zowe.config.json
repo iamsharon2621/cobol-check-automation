@@ -5,7 +5,7 @@
       "type": "base",
       "properties": {
         "host": "${ZOWE_ZOSMF_HOST}",
-        "port": ${ZOWE_ZOSMF_PORT},
+        "port": "${ZOWE_ZOSMF_PORT}",
         "user": "${ZOWE_USERNAME}",
         "password": "${ZOWE_PASSWORD}",
         "rejectUnauthorized": false
@@ -20,7 +20,7 @@
       "properties": {
         "port": 22,
         "host": "${ZOWE_ZOSMF_HOST}",
-        "port": ${ZOWE_ZOSMF_PORT},
+        "port": "${ZOWE_ZOSMF_PORT}",
         "user": "${ZOWE_USERNAME}",
         "password": "${ZOWE_PASSWORD}"
       },
