@@ -4,10 +4,10 @@
     "base": {
       "type": "base",
       "properties": {
-        "host": "${{ variables.ZOWE_ZOSMF_HOST }}",
+        "host": "${ZOWE_ZOSMF_HOST}",
         "port": 10443,
-        "user": "${{ secrets.ZOWE_USERNAME }}",
-        "password": "${{ secrets.ZOWE_PASSWORD }}",
+        "user": "${ZOWE_USERNAME}",
+        "password": "${ZOWE_PASSWORD}",
         "rejectUnauthorized": false
       },
       "secure": [
@@ -19,10 +19,10 @@
       "type": "ssh",
       "properties": {
         "port": 22,
-        "host": "${{ variables.ZOWE_ZOSMF_HOST }}",
+        "host": "${ZOWE_ZOSMF_HOST}",
         "port": 10443,
-        "user": "${{ secrets.ZOWE_USERNAME }}",
-        "password": "${{ secrets.ZOWE_PASSWORD }}"
+        "user": "${ZOWE_USERNAME}",
+        "password": "${ZOWE_PASSWORD}"
       },
       "secure": [
         "user",
