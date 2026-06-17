@@ -5,12 +5,13 @@
 export PATH=$PATH:/usr/lpp/java/J8.0_64/bin
 export JAVA_HOME=/usr/lpp/java/J8.0_64
 export PATH=$PATH:/usr/lpp/zowe/cli/node/bin
+cd /z/${LOWERCASE_USERNAME}
 
 # Check Java availability
 java -version
 
 # Set ZOWE_USERNAME
-ZOWE_USERNAME="Z80922" # Replace with the actual username
+# ZOWE_USERNAME="Z80922" # Replace with the actual username
 
 # Change to the cobolcheck directory
 cd cobolcheck
