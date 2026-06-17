@@ -58,7 +58,7 @@ jobs:
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
-        export ZOWE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}")
+        export X_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}")
         export LOWERCASE_USERNAME=$(echo "${{ secrets.ZOWE_USERNAME }}" | tr '[:upper:]' '[:lower:]')
         chmod +x .github/scripts/mainframe_operations.sh
         .github/scripts/mainframe_operations.sh
