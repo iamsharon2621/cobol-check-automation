@@ -26,15 +26,6 @@ jobs:
     - name: Install Zowe CLI
       run: npm install -g @zowe/cli@latest
 
-    - name: Create Zowe Profile
-      run: |
-        zowe profiles create zosmf-profile main-profile \
-          --host "${{ secrets.ZOWE_ZOSMF_HOST }}" \
-          --port "${{ secrets.ZOWE_ZOSMF_PORT }}" \
-          --user "${{ secrets.ZOWE_USERNAME }}" \
-          --pass "${{ secrets.ZOWE_PASSWORD }}" \
-          --reject-unauthorized false
-        
     - name: Run COBOL Check
       env:
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
@@ -46,6 +37,7 @@ jobs:
 
     - name: Setup Mainframe Environment and Upload COBOL Check
       env:
+        ZOWE_ZOSMF_HOST: ${{ secrets.ZOWE_ZOSMF_HOST }}
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
@@ -54,6 +46,7 @@ jobs:
 
     - name: Run COBOL Check on Mainframe
       env:
+        ZOWE_ZOSMF_HOST: ${{ secrets.ZOWE_ZOSMF_HOST }}
         ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
         ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
       run: |
