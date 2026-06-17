@@ -22,6 +22,11 @@ jobs:
       with:
         distribution: 'microsoft'
         java-version: '11'
+
+    - name: Install GnuCOBOL Compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gnucobol
         
     - name: Install Zowe CLI
       run: npm install -g @zowe/cli@latest
