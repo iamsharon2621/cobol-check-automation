@@ -36,6 +36,8 @@ run_cobolcheck() {
   ./cobolcheck -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
+  ls -lrt ./testruns
+  ls -lrt ../
   # Define the correct path where CobolCheck puts the generated test file
   GENERATED_CBL="./cobol-check/testruns/CC##99.CBL"
   # Define the correct path where JCL file located
