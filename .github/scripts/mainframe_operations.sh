@@ -16,6 +16,7 @@ java -version
 cd cobol-check
 echo "Changed to $(pwd)"
 ls -al
+cd ..
 
 # Make cobolcheck executable
 chmod +x cobolcheck
