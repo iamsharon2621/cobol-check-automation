@@ -36,10 +36,15 @@ run_cobolcheck() {
   ./cobolcheck -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
+  # Define the correct path where CobolCheck puts the generated test file
+  GENERATED_CBL="./cobol-check/testruns/CC##99.CBL"
+  # Define the correct path where JCL file located
+  PGM_JCL="../$program.JCL"
+
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
-  if [ -f "CC##99.CBL" ]; then
+  if [ -f "${GENERATED_CBL}" ]; then
     # Copy to the MVS dataset
-    if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
+    if cp ${GENERATED_CBL} "//'${ZOWE_USERNAME}.CBL($program)'"; then
       echo "Copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
     else
       echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
@@ -49,14 +54,14 @@ run_cobolcheck() {
   fi
 
   # Copy the JCL file if it exists
-  if [ -f "${program}.JCL" ]; then
-    if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
-      echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+  if [ -f "${PGM_JCL}" ]; then
+    if cp ${PGM_JCL} "//'${ZOWE_USERNAME}.JCL($program)'"; then
+      echo "Copied ${PGM_JCL} to ${ZOWE_USERNAME}.JCL($program)"
     else
-      echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+      echo "Failed to copy ${PGM_JCL} to ${ZOWE_USERNAME}.JCL($program)"
     fi
   else
-    echo "${program}.JCL not found"
+    echo "${PGM_JCL} not found"
   fi
 }
 
