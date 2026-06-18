@@ -9,11 +9,6 @@ export PATH=$PATH:/usr/lpp/zowe/cli/node/bin
 # Check Java availability
 java -version
 
-# Set ZOWE_USERNAME
-# ZOWE_USERNAME="Z80922" # Replace with the actual username
-echo "The lowercase user is: $LC_USERNAME"
-echo "The uppercase user is: $UC_USERNAME"
-
 # Change to the cobolcheck directory
 cd cobol-check
 echo "Changed to $(pwd)"
@@ -41,14 +36,16 @@ run_cobolcheck() {
   ls -lrt ./testruns
   ls -lrt ../
   # Define the correct path where CobolCheck puts the generated test file
-  GENERATED_CBL="./testruns/CC##99.CBL"
+  PATH_CBL="./testruns/CC##99.CBL"
   # Define the correct path where JCL file located
-  PGM_JCL="../$program.JCL"
+  PATH_JCL="../$program.JCL"
+  ls -lrt "$PATH_CBL"
+  ls -lrt "$PATH_JCL"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
-  if [ -f "${GENERATED_CBL}" ]; then
+  if [ -f "${PATH_CBL}" ]; then
     # Copy to the MVS dataset
-    if cp ${GENERATED_CBL} "//'$UC_USERNAME.CBL($program)'"; then
+    if cp ${PATH_CBL} "//'$UC_USERNAME.CBL($program)'"; then
       echo "Copied CC##99.CBL to $UC_USERNAME.CBL($program)"
     else
       echo "Failed to copy CC##99.CBL to $UC_USERNAME.CBL($program)"
@@ -60,15 +57,15 @@ run_cobolcheck() {
   fi
 
   # Copy the JCL file if it exists
-  if [ -f "${PGM_JCL}" ]; then
-    if cp ${PGM_JCL} "//'$UC_USERNAME.JCL($program)'"; then
+  if [ -f "${PATH_JCL}" ]; then
+    if cp ${PATH_JCL} "//'$UC_USERNAME.JCL($program)'"; then
       echo "Copied ${PGM_JCL} to $UC_USERNAME.JCL($program)"
     else
-      echo "Failed to copy ${PGM_JCL} to $UC_USERNAME.JCL($program)"
+      echo "Failed to copy ${PATH_JCL} to $UC_USERNAME.JCL($program)"
       exit 1
     fi
   else
-    echo "${PGM_JCL} not found"
+    echo "${PATH_JCL} not found"
     exit 1
   fi
 }
