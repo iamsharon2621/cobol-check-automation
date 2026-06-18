@@ -33,14 +33,10 @@ run_cobolcheck() {
   ./cobolcheck -p $program
   echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
-  ls -lrt ./testruns
-  ls -lrt ../
   # Define the correct path where CobolCheck puts the generated test file
   PATH_CBL="./testruns/CC##99.CBL"
   # Define the correct path where JCL file located
   PATH_JCL="../$program.JCL"
-  ls -lrt "$PATH_CBL"
-  ls -lrt "$PATH_JCL"
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "${PATH_CBL}" ]; then
