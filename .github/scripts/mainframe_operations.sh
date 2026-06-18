@@ -44,8 +44,8 @@ run_cobolcheck() {
 
   # Check if CC##99.CBL was created, regardless of cobolcheck exit status
   if [ -f "${PATH_CBL}" ]; then
-    # Copy to the MVS dataset
-    if cp ${PATH_CBL} "//'$UC_USERNAME.CBL($program)'"; then
+    # Upload to the MVS dataset member using Zowe CLI
+    if zowe zos-files upload file-to-data-set "${PATH_CBL}" "${UC_USERNAME}.CBL(${program})"; then
       echo "Copied CC##99.CBL to $UC_USERNAME.CBL($program)"
     else
       echo "Failed to copy CC##99.CBL to $UC_USERNAME.CBL($program)"
@@ -58,7 +58,7 @@ run_cobolcheck() {
 
   # Copy the JCL file if it exists
   if [ -f "${PATH_JCL}" ]; then
-    if cp ${PATH_JCL} "//'$UC_USERNAME.JCL($program)'"; then
+    if zowe zos-files upload file-to-data-set "${PATH_JCL}" "${UC_USERNAME}.JCL(${program})"; then
       echo "Copied ${PGM_JCL} to $UC_USERNAME.JCL($program)"
     else
       echo "Failed to copy ${PATH_JCL} to $UC_USERNAME.JCL($program)"
