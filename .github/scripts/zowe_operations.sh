@@ -1,9 +1,6 @@
 #!/bin/bash
 # zowe_operations.sh
 
-echo "The lowercase user is: $LC_USERNAME"
-echo "The uppercase user is: $UC_USERNAME"
-
 # Check if directory exists, create if it doesn't
 if ! zowe zos-files list uss-files "/z/$LC_USERNAME/cobolcheck" &>/dev/null; then
   echo "Directory does not exist. Creating it..."
